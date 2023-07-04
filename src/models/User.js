@@ -22,4 +22,11 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Users", userSchema);
+let UserModel;
+try {
+  UserModel = mongoose.model("Users");
+} catch (error) {
+  UserModel = mongoose.model("Users", userSchema);
+}
+
+export default UserModel;
