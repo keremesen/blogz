@@ -34,3 +34,13 @@
     font-weight: bold;
   }
   
+  .buttonGoogle{
+    width: 300px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: #bbb;
+    border: none;
+    border-radius: 5px;
+    color: #111;
+    font-weight: bold;
+  }

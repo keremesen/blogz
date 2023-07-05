@@ -38,8 +38,8 @@ const Login = () => {
         />
         <button className={styles.button}>Login</button>
       </form>
-      <button className={styles.button} onClick={() => signIn("google")}>
-        login w google
+      <button className={styles.buttonGoogle} onClick={() => signIn("google")}>
+        Login With Google
       </button>
     </div>
   );
