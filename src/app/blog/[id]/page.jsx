@@ -11,7 +11,6 @@ async function getData(id) {
     });
 
     if (!res.ok) {
-      console.log(res);
       return notFound();
     }
 
@@ -19,13 +18,6 @@ async function getData(id) {
   }
 }
 
-export async function generateMetadata({ params }) {
-  const post = await getData(params.id);
-  return {
-    title: post.title,
-    description: post.desc,
-  };
-}
 
 const BlogPost = ({ params }) => {
   const [data, setData] = useState(null);
