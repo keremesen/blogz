@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
 
 const Login = () => {
   const session = useSession();
@@ -41,6 +42,7 @@ const Login = () => {
       <button className={styles.buttonGoogle} onClick={() => signIn("google")}>
         Login With Google
       </button>
+      <Link href="/dashboard/register">Dont have an account? Create new.</Link>
     </div>
   );
 };

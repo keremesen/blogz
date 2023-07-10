@@ -1,26 +1,38 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/posts", {
-    cache: "no-store",
-  });
+  if(typeof window !=="undefined"){
 
-  if (!res.ok) {
-    return notFound();
+    const res = await fetch(`${ window.location.origin}/api/posts`, {
+      cache: "no-store",
+    });
+    
+    if (!res.ok) {
+      return notFound();
+    }
+    
+    return res.json();
   }
-
-  return res.json();
 }
 
-const Blog = async () => {
-  const data = await getData();
+
+const Blog = () => {
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    getData().then(result => setData(result));
+  }, []);
+
+
   return (
     <div className={styles.mainContainer}>
-      {data.map((item) => (
+      { data && data.map((item) => (
         <Link
           href={`/blog/${item._id}`}
           className={styles.container}
